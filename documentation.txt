@@ -1,0 +1,168 @@
+===== Data Structures and Algorithms Laboratory Documentation =====
+
+DSA1: Telephone Directory Using Hashing
+======================================
+Purpose: Implementation of a telephone directory management system
+Data Structure: Hash Table with Linear Probing
+Key Features:
+- Contact storage and retrieval using hashing
+- Collision resolution using linear probing
+- Operations: Insert, Search, Delete, Update
+Real-world Applications:
+- Phone Contact Management
+- Customer Database Systems
+- Directory Services
+
+DSA2: Set Operations Implementation
+=================================
+Purpose: Implementation of mathematical set operations
+Data Structure: STL List
+Key Operations:
+- Union, Intersection, Difference
+- Add/Delete elements
+- Search elements
+Real-world Applications:
+- Database Query Systems
+- Access Control Management
+- Data Analytics
+
+DSA3: Binary Search Tree Operations
+=================================
+Purpose: Implementation of BST and its operations
+Data Structure: Binary Search Tree
+Key Features:
+- Tree traversals (Pre/In/Post order)
+- Search operations
+- Height calculation
+- Tree mirroring
+Real-world Applications:
+- File System Organization
+- Database Indexing
+- Expression Evaluation
+
+DSA4: Dictionary Using Binary Search Tree
+=======================================
+Purpose: Implementation of a dictionary system
+Data Structure: Binary Search Tree
+Key Features:
+- Word-meaning storage
+- Alphabetical ordering
+- Search and update operations
+Real-world Applications:
+- Digital Dictionaries
+- Language Learning Tools
+- Spell Checkers
+
+DSA5: Threaded Binary Tree
+=========================
+Purpose: Enhanced binary tree with threading
+Data Structure: Threaded Binary Tree
+Key Features:
+- Thread implementation
+- Efficient traversal
+- Memory optimization
+Real-world Applications:
+- Memory-efficient tree implementations
+- Expression evaluation systems
+- Compiler symbol tables
+
+DSA6: Flight Routes Management
+============================
+Purpose: Flight network management system
+Data Structure: Graph (Adjacency Matrix)
+Key Features:
+- City connections management
+- Distance tracking
+- Network visualization
+Real-world Applications:
+- Airline Route Planning
+- Travel Systems
+- Network Optimization
+
+DSA7: Network Optimization (Prim's Algorithm)
+=========================================
+Purpose: Finding minimum cost spanning tree
+Data Structure: Graph with Adjacency Matrix
+Key Features:
+- Network cost optimization
+- Minimum spanning tree
+- Connection cost calculation
+Real-world Applications:
+- Network Infrastructure Planning
+- Telecommunications
+- Utility Grid Design
+
+DSA8: Optimal Binary Search Tree
+==============================
+Purpose: Creation of cost-efficient BST
+Data Structure: Dynamic Programming Arrays
+Key Features:
+- Probability-based tree construction
+- Cost optimization
+- Tree structure printing
+Real-world Applications:
+- Search Engine Optimization
+- Decision Tree Construction
+- Resource Access Optimization
+
+DSA9: AVL Tree Dictionary
+=======================
+Purpose: Self-balancing BST implementation for dictionary
+Data Structure: AVL Tree
+Key Features:
+- Auto-balancing tree operations
+- Height-balanced insertions and deletions
+- LL, RR, LR, RL rotations
+- Ascending/Descending traversals
+Real-world Applications:
+- High-performance dictionaries
+- Database index management
+- Memory-efficient sorting systems
+- Real-time data organization
+
+DSA10: Max Heap for Marks Management
+================================
+Purpose: Implementation of priority queue using max heap
+Data Structure: Binary Max Heap
+Key Features:
+- Dynamic heap array implementation
+- Heap operations (insert, extractMax)
+- Min/Max marks tracking
+- Heapify operations (up/down)
+Real-world Applications:
+- Student Marks Management
+- Priority Scheduling
+- Memory Management
+- Event Queue Processing
+
+DSA11: File Operations for Student Records
+=====================================
+Purpose: Implementation of file handling operations for student database
+Data Structure: File Streams and Record Management
+Key Features:
+- File-based CRUD operations
+- Record modification by roll number/name
+- Sequential file access
+- Record deletion with file recreation
+Real-world Applications:
+- Student Information Systems
+- Database Management Systems
+- Record Keeping Applications
+- Academic Management Software
+
+DSA12: Employee Information System
+==============================
+Purpose: Binary file handling for employee records
+Data Structure: Binary Files and Record Management
+Key Features:
+- Binary file operations
+- Direct file access
+- Record deletion with file reconstruction
+- Structured employee data management
+Real-world Applications:
+- HR Management Systems
+- Employee Databases
+- Payroll Systems
+- Company Directory Management
+
+Each practical demonstrates fundamental concepts in data structures and algorithms, with practical applications in real-world scenarios. The implementations focus on both theoretical understanding and practical usage in software development.

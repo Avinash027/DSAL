@@ -1,0 +1,223 @@
+=== DSA8: Optimal Binary Search Tree (OBST) ===
+
+1. CONCEPT EXPLANATION
+---------------------
+An Optimal BST is a binary search tree constructed with the goal of minimizing the total search cost, considering the probability of each key being searched.
+Source: https://www.geeksforgeeks.org/optimal-binary-search-tree-dp-24/
+
+2. INPUT/OUTPUT SPECIFICATIONS
+----------------------------
+INPUT:
+- Number of nodes (n)
+- Probability of successful search (p[])
+- Probability of unsuccessful search (q[])
+
+OUTPUT:
+- Optimal BST structure
+- Minimum cost of tree
+- Root of each subtree
+
+3. DATA STRUCTURES USED
+----------------------
+Arrays for Dynamic Programming:
+```cpp
+float a[20];     // Successful search probabilities
+float b[20];     // Unsuccessful search probabilities
+float wt[20][20]; // Weight array
+float c[20][20];  // Cost array
+int r[20][20];    // Root array
+```
+
+4. DYNAMIC PROGRAMMING SOLUTION
+----------------------------
+Core Algorithm:
+```cpp
+void con_obst() {
+    // Initialize for chains of length 1
+    for(i = 0; i < n; i++) {
+        wt[i][i] = b[i];
+        c[i][i] = 0.0;
+        r[i][i] = 0;
+    }
+    
+    // Consider chains of increasing length
+    for(l = 2; l <= n; l++) {
+        for(i = 0; i <= n-l; i++) {
+            j = i + l - 1;
+            wt[i][j] = wt[i][j-1] + a[j] + b[j];
+            c[i][j] = INT_MAX;
+            
+            // Try each node as root
+            for(k = i+1; k <= j; k++) {
+                cost = c[i][k-1] + c[k][j] + wt[i][j];
+                if(cost < c[i][j]) {
+                    c[i][j] = cost;
+                    r[i][j] = k;
+                }
+            }
+        }
+    }
+}
+```
+
+5. TIME & SPACE COMPLEXITY
+-------------------------
+Time Complexity:
+- O(n³) for optimal tree construction
+- O(n) for tree traversal
+
+Space Complexity:
+- O(n²) for DP tables
+- O(n) for probability arrays
+
+Where n = number of nodes
+
+6. PRACTICAL APPLICATIONS
+-----------------------
+1. Dictionary Implementation:
+   - Frequency-based word lookup
+   - Auto-complete systems
+   - Spell checkers
+
+2. Compiler Design:
+   - Symbol table organization
+   - Keyword recognition
+   - Identifier lookup
+
+3. Search Systems:
+   - Weighted search
+   - Priority-based access
+   - Frequency optimization
+
+7. IMPLEMENTATION DETAILS
+-----------------------
+1. Table Construction:
+```cpp
+// Initialize for single nodes
+for(i = 0; i < n; i++) {
+    c[i][i] = 0.0;
+    r[i][i] = 0;
+    wt[i][i] = b[i];
+    wt[i][i+1] = b[i] + b[i+1] + a[i+1];
+}
+```
+
+2. Tree Construction:
+```cpp
+void constructTree(int i, int j) {
+    if(i < j) {
+        int k = r[i][j];
+        cout << "Root: " << k << endl;
+        constructTree(i, k-1);  // Left subtree
+        constructTree(k, j);    // Right subtree
+    }
+}
+```
+
+8. ADVANTAGES & LIMITATIONS
+------------------------
+Advantages:
+1. Minimum search cost
+2. Optimized for access patterns
+3. Efficient for static data
+4. Balanced structure
+
+Limitations:
+1. High construction complexity
+2. Static structure
+3. Requires known probabilities
+4. Space intensive
+
+9. ERROR HANDLING
+---------------
+1. Probability Validation:
+   - Sum check (should be 1)
+   - Non-negative values
+   - Range verification
+
+2. Memory Management:
+   - Dynamic allocation
+   - Array bounds checking
+
+3. Input Validation:
+   - Node count limits
+   - Probability format
+
+10. OPTIMIZATION TECHNIQUES
+------------------------
+1. Memory Usage:
+   - Space-efficient arrays
+   - Table compression
+
+2. Computation:
+   - Memoization
+   - Matrix optimization
+   - Pruning impossible cases
+
+3. Implementation:
+   - Iterative methods
+   - Table reuse
+   - Early termination
+
+11. EXAMPLE USAGE
+--------------
+Input:
+```
+n = 4
+p[] = {0.1, 0.2, 0.4, 0.3}
+q[] = {0.05, 0.1, 0.05, 0.05, 0.05}
+```
+
+Output:
+```
+Optimal Cost: 2.75
+Root: 3
+Structure:
+     3
+   /   \
+  2     4
+ /
+1
+```
+
+12. CODE IMPROVEMENT SUGGESTIONS
+-----------------------------
+1. Add iterative solution
+2. Implement memory optimization
+3. Add probability validation
+4. Include rebalancing
+5. Add visualization
+
+13. ADVANCED FEATURES
+------------------
+1. Dynamic Probability Updates:
+   - Frequency tracking
+   - Tree reconstruction
+   - Cost recalculation
+
+2. Multi-dimensional Extension:
+   - Multiple key types
+   - Composite probabilities
+   - Hybrid structures
+
+3. Analysis Tools:
+   - Cost comparison
+   - Structure validation
+   - Performance metrics
+
+14. PRACTICAL CONSIDERATIONS
+-------------------------
+1. Implementation Choice:
+   - Memory vs. Speed tradeoff
+   - Probability accuracy
+   - Update frequency
+
+2. Usage Scenarios:
+   - Static vs. Dynamic data
+   - Access patterns
+   - Memory constraints
+
+3. Maintenance:
+   - Probability updates
+   - Structure verification
+   - Performance monitoring

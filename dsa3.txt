@@ -1,0 +1,201 @@
+=== DSA3: Binary Search Tree Operations ===
+
+1. CONCEPT EXPLANATION
+---------------------
+Binary Search Tree (BST) is a binary tree with the property that the key in each node is greater than all keys in its left subtree and smaller than all keys in its right subtree.
+Source: https://www.geeksforgeeks.org/binary-search-tree-data-structure/
+
+2. INPUT/OUTPUT SPECIFICATIONS
+----------------------------
+INPUT:
+- Integer values for tree nodes
+- Choice of operation (1-10)
+- Search values
+- Values for insertion/deletion
+
+OUTPUT:
+- Tree traversals (Pre/In/Post order)
+- Search results
+- Height of tree
+- Smallest/Largest values
+- Mirror image of tree
+
+3. DATA STRUCTURES USED
+----------------------
+Node Structure:
+```cpp
+struct Node {
+    int data;
+    Node* right;
+    Node* left;
+};
+```
+
+4. OPERATIONS IMPLEMENTED
+------------------------
+1. CREATE/INSERT:
+   - Create new node
+   - Compare with root
+   - Place in appropriate position
+   Time Complexity: O(h), h = height of tree
+
+2. TRAVERSALS:
+   a) Preorder (Root-Left-Right):
+      ```cpp
+      void displayPre(Node* root) {
+          if(root != NULL) {
+              cout << root->data;
+              displayPre(root->left);
+              displayPre(root->right);
+          }
+      }
+      ```
+
+   b) Inorder (Left-Root-Right):
+      ```cpp
+      void displayIn(Node* root) {
+          if(root != NULL) {
+              displayIn(root->left);
+              cout << root->data;
+              displayIn(root->right);
+          }
+      }
+      ```
+
+   c) Postorder (Left-Right-Root):
+      ```cpp
+      void displayPost(Node* root) {
+          if(root != NULL) {
+              displayPost(root->left);
+              displayPost(root->right);
+              cout << root->data;
+          }
+      }
+      ```
+
+3. HEIGHT CALCULATION:
+   ```cpp
+   int height(Node* root) {
+       if(root == NULL) return 0;
+       return max(height(root->left), height(root->right)) + 1;
+   }
+   ```
+
+4. SEARCH OPERATION:
+   - Compare with root
+   - Move left if smaller
+   - Move right if larger
+   Time Complexity: O(h)
+
+5. MIN/MAX FINDING:
+   - Leftmost node for minimum
+   - Rightmost node for maximum
+   Time Complexity: O(h)
+
+6. MIRROR IMAGE:
+   - Swap left and right pointers
+   - Recursively mirror subtrees
+   Time Complexity: O(n)
+
+5. TIME COMPLEXITY ANALYSIS
+-------------------------
+- Insertion: O(h)
+- Deletion: O(h)
+- Search: O(h)
+- Traversal: O(n)
+- Height: O(n)
+- Mirror: O(n)
+
+Where h = height of tree, n = number of nodes
+
+6. SPACE COMPLEXITY
+-----------------
+- O(n) for tree storage
+- O(h) for recursive stack space
+
+7. PRACTICAL APPLICATIONS
+-----------------------
+1. File System Organization:
+   - Directory structure
+   - File hierarchy
+
+2. Database Indexing:
+   - B-trees and variants
+   - Quick data retrieval
+
+3. Expression Evaluation:
+   - Syntax trees
+   - Mathematical expressions
+
+4. Decision Trees:
+   - Game programming
+   - AI applications
+
+8. EXAMPLE USAGE
+--------------
+```
+Input: 50, 30, 70, 20, 40, 60, 80
+
+Tree Structure:
+       50
+      /  \
+     30   70
+    / \   / \
+   20 40 60  80
+
+Operations:
+1. Inorder: 20,30,40,50,60,70,80
+2. Height: 3
+3. Minimum: 20
+4. Maximum: 80
+```
+
+9. IMPLEMENTATION BENEFITS
+------------------------
+1. Efficient Searching:
+   - Better than linear search
+   - Self-balancing possible
+
+2. Ordered Operations:
+   - Inorder gives sorted output
+   - Range queries possible
+
+3. Flexible Structure:
+   - Easy insertion/deletion
+   - Simple implementation
+
+10. COMMON ERRORS & HANDLING
+--------------------------
+1. Empty Tree Operations:
+   - Null pointer checks
+   - Base case handling
+
+2. Duplicate Values:
+   - Define behavior
+   - Update or ignore
+
+3. Unbalanced Trees:
+   - Performance degradation
+   - Consider balancing
+
+11. OPTIMIZATION TECHNIQUES
+------------------------
+1. Balanced Insertion:
+   - Keep tree height minimal
+   - Use rotation if needed
+
+2. Efficient Traversal:
+   - Iterative methods
+   - Stack optimization
+
+3. Memory Management:
+   - Proper deletion
+   - Resource cleanup
+
+12. CODE IMPROVEMENT SUGGESTIONS
+-----------------------------
+1. Add balancing mechanism
+2. Implement iterative versions
+3. Add range search operations
+4. Include tree validation
+5. Add visualization support

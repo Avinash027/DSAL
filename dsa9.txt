@@ -1,0 +1,233 @@
+=== DSA9: AVL Tree Implementation ===
+
+1. CONCEPT EXPLANATION
+---------------------
+AVL Tree is a self-balancing Binary Search Tree where the difference between heights of left and right subtrees cannot exceed one for all nodes.
+Source: https://www.geeksforgeeks.org/avl-tree-set-1-insertion/
+
+2. INPUT/OUTPUT SPECIFICATIONS
+----------------------------
+INPUT:
+- Keywords and their meanings
+- Operation choice (1-4)
+- Keys for search/delete
+
+OUTPUT:
+- Balanced tree structure
+- Operation success/failure
+- Ascending/Descending displays
+
+3. DATA STRUCTURES USED
+----------------------
+Node Structure:
+```cpp
+class node {
+    string key;
+    string meaning;
+    node *left;
+    node *right;
+};
+```
+
+4. BALANCING OPERATIONS
+---------------------
+1. Single Rotations:
+   a) Left Rotation (LL):
+   ```cpp
+   node* LL(node* parent) {
+       node* temp = parent->left;
+       parent->left = temp->right;
+       temp->right = parent;
+       return temp;
+   }
+   ```
+
+   b) Right Rotation (RR):
+   ```cpp
+   node* RR(node* parent) {
+       node* temp = parent->right;
+       parent->right = temp->left;
+       temp->left = parent;
+       return temp;
+   }
+   ```
+
+2. Double Rotations:
+   a) Left-Right (LR):
+   ```cpp
+   node* LR(node* parent) {
+       parent->left = RR(parent->left);
+       return LL(parent);
+   }
+   ```
+
+   b) Right-Left (RL):
+   ```cpp
+   node* RL(node* parent) {
+       parent->right = LL(parent->right);
+       return RR(parent);
+   }
+   ```
+
+5. KEY OPERATIONS
+---------------
+1. INSERT:
+   - Standard BST insertion
+   - Calculate balance factor
+   - Perform necessary rotations
+   Time Complexity: O(log n)
+
+2. DELETE:
+   - Standard BST deletion
+   - Balance tree after removal
+   - Update heights
+   Time Complexity: O(log n)
+
+3. SEARCH:
+   - Standard BST search
+   - Guaranteed O(log n) due to balancing
+   Time Complexity: O(log n)
+
+6. BALANCING MECHANISM
+--------------------
+Balance Factor = Height(Left Subtree) - Height(Right Subtree)
+Possible values: {-1, 0, 1}
+
+Cases requiring rotation:
+1. Left Heavy (BF > 1):
+   - LL: New node in left of left
+   - LR: New node in right of left
+
+2. Right Heavy (BF < -1):
+   - RR: New node in right of right
+   - RL: New node in left of right
+
+7. TIME & SPACE COMPLEXITY
+-------------------------
+Time Complexity:
+- Insertion: O(log n)
+- Deletion: O(log n)
+- Search: O(log n)
+- Traversal: O(n)
+
+Space Complexity:
+- O(n) for n nodes
+- O(log n) for recursive stack
+
+8. PRACTICAL APPLICATIONS
+-----------------------
+1. Database Indexing:
+   - Efficient record retrieval
+   - Sorted data maintenance
+   - Range queries
+
+2. Memory Management:
+   - Memory allocation
+   - Process scheduling
+   - Resource management
+
+3. File Systems:
+   - Directory organization
+   - File indexing
+   - Quick access paths
+
+9. ADVANTAGES & LIMITATIONS
+------------------------
+Advantages:
+1. Guaranteed O(log n) operations
+2. Self-balancing
+3. Efficient for frequent searches
+4. Height-balanced structure
+
+Limitations:
+1. Complex implementation
+2. Extra space for height info
+3. Rotation overhead
+4. Complex deletion
+
+10. ERROR HANDLING
+----------------
+1. Duplicate Keys:
+   - Update existing entry
+   - Reject duplicate
+   - Error message
+
+2. Empty Tree Operations:
+   - Null checks
+   - Appropriate messages
+   - Default returns
+
+3. Invalid Operations:
+   - Balance validation
+   - Pointer checks
+   - Memory management
+
+11. OPTIMIZATION TECHNIQUES
+------------------------
+1. Height Calculation:
+   - Store height in nodes
+   - Avoid recalculation
+   - Cache common values
+
+2. Rotation Selection:
+   - Direct case identification
+   - Minimize rotations
+   - Balance factor tracking
+
+3. Memory Management:
+   - Efficient node structure
+   - Smart pointers
+   - Memory pools
+
+12. EXAMPLE USAGE
+--------------
+Operations Sequence:
+```
+1. Insert("Book", "Reading material")
+2. Insert("Apple", "Fruit")
+3. Insert("Cat", "Animal")
+
+Tree after balancing:
+     Book
+    /    \
+Apple    Cat
+
+Balance Factors:
+Book: 0
+Apple: 0
+Cat: 0
+```
+
+13. IMPLEMENTATION CONSIDERATIONS
+-----------------------------
+1. Node Design:
+   - Balance factor storage
+   - Parent pointers
+   - Height information
+
+2. Rotation Implementation:
+   - Pointer manipulation
+   - Height updates
+   - Parent updates
+
+3. Deletion Strategy:
+   - Successor finding
+   - Balance maintenance
+   - Memory cleanup
+
+14. ADVANCED FEATURES
+------------------
+1. Iterator Implementation:
+   - In-order traversal
+   - Reverse traversal
+   - Range iteration
+
+2. Serialization:
+   - Tree persistence
+   - State recovery
+   - Balance preservation
+
+3. Concurrent Access:
+   - Thread safety
+   - Lock mechanisms
+   - Atomic operations

@@ -1,0 +1,193 @@
+=== DSA6: Flight Routes Using Adjacency Matrix ===
+
+1. CONCEPT EXPLANATION
+---------------------
+Implementation of a flight routing system using Graph representation with Adjacency Matrix, where cities are vertices and routes are edges with distances as weights.
+Source: https://www.geeksforgeeks.org/graph-and-its-representations/
+
+2. INPUT/OUTPUT SPECIFICATIONS
+----------------------------
+INPUT:
+- Source city name
+- Destination city name
+- Distance between cities
+- Choice of operation (1-3)
+
+OUTPUT:
+- Adjacency matrix display
+- City index mapping
+- Route information
+
+3. DATA STRUCTURES USED
+----------------------
+Class Components:
+```cpp
+class flight {
+    int am[10][10];          // Adjacency Matrix
+    char city_index[10][10]; // City names array
+};
+```
+
+4. OPERATIONS IMPLEMENTED
+------------------------
+1. CREATE ROUTE NETWORK:
+   Process:
+   - Input source city
+   - Input destination city
+   - Store distance
+   - Update matrix
+   Time Complexity: O(1)
+
+2. DISPLAY ROUTES:
+   Process:
+   - Show city indices
+   - Display full matrix
+   - Show connections
+   Time Complexity: O(n²)
+
+3. CITY MANAGEMENT:
+   - Dynamic city addition
+   - Index mapping
+   - Distance storage
+
+5. ADJACENCY MATRIX REPRESENTATION
+--------------------------------
+Example Matrix:
+```
+    Mumbai  Delhi  Kolkata
+M [  0      500    1200  ]
+D [ 500      0     700   ]
+K [ 1200    700     0    ]
+```
+
+6. TIME & SPACE COMPLEXITY
+-------------------------
+Time Complexity:
+- Creation: O(1) per edge
+- Display: O(n²)
+- City Addition: O(1)
+
+Space Complexity:
+- O(n²) for adjacency matrix
+- O(n) for city names
+
+Where n = number of cities
+
+7. PRACTICAL APPLICATIONS
+-----------------------
+1. Airline Route Planning:
+   - Flight scheduling
+   - Distance calculation
+   - Route optimization
+
+2. Transportation Networks:
+   - Bus routes
+   - Train connections
+   - Shipping routes
+
+3. Network Planning:
+   - Infrastructure planning
+   - Cost optimization
+   - Route analysis
+
+8. IMPLEMENTATION DETAILS
+-----------------------
+1. Matrix Initialization:
+```cpp
+flight::flight() {
+    for(int i=0; i<10; i++) {
+        strcpy(city_index[i], "xx");
+        for(int j=0; j<10; j++)
+            am[i][j] = 0;
+    }
+}
+```
+
+2. Route Creation:
+```cpp
+void create() {
+    // Input cities
+    // Find or create city indices
+    // Store distance in matrix
+    am[source_index][dest_index] = distance;
+}
+```
+
+9. ADVANTAGES & LIMITATIONS
+------------------------
+Advantages:
+1. Fast access to route information
+2. Simple implementation
+3. Easy to modify routes
+4. Direct distance lookup
+
+Limitations:
+1. Fixed maximum size
+2. Space inefficient for sparse routes
+3. Limited route attributes
+
+10. ERROR HANDLING
+----------------
+1. Invalid Cities:
+   - City name validation
+   - Index range checks
+
+2. Distance Errors:
+   - Negative distance check
+   - Maximum limit validation
+
+3. Matrix Overflow:
+   - Size boundary checks
+   - Capacity management
+
+11. OPTIMIZATION TECHNIQUES
+------------------------
+1. Space Optimization:
+   - Sparse matrix handling
+   - Dynamic sizing
+
+2. Search Optimization:
+   - City name indexing
+   - Hash-based lookup
+
+3. Memory Management:
+   - Efficient string storage
+   - Matrix compression
+
+12. CODE IMPROVEMENT SUGGESTIONS
+-----------------------------
+1. Add route deletion
+2. Implement path finding
+3. Add route scheduling
+4. Include cost calculation
+5. Add capacity constraints
+
+13. EXAMPLE USAGE
+--------------
+Operations:
+1. Add route: Mumbai to Delhi, 500 km
+2. Add route: Delhi to Kolkata, 700 km
+3. Display routes:
+```
+     M    D    K
+M    0   500  0
+D   500   0   700
+K    0   700   0
+```
+
+14. ADDITIONAL FEATURES TO CONSIDER
+-------------------------------
+1. Route Properties:
+   - Flight duration
+   - Cost information
+   - Frequency
+
+2. Advanced Operations:
+   - Shortest path finding
+   - Alternative routes
+   - Multi-city routing
+
+3. Constraints Handling:
+   - Time restrictions
+   - Capacity limits
+   - Weather conditions

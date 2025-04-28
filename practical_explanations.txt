@@ -1,0 +1,112 @@
+===== Detailed DSA Practicals Explanation =====
+
+DSA1: Telephone Directory Using Hashing
+=====================================
+
+1. CONCEPT EXPLANATION
+---------------------
+Hash Table: A data structure that implements an associative array abstract data type, a structure that can map keys to values.
+Source: https://www.geeksforgeeks.org/hashing-data-structure/
+
+2. INPUT PROCESSING
+------------------
+- Name (string)
+- Telephone number (string)
+These inputs are processed using:
+a) ASCII Generator Function:
+   - Takes name as input
+   - Converts each character to ASCII value
+   - Sums up all ASCII values
+   - Returns sum % 100 (hash value)
+
+3. DATA STRUCTURE USED
+---------------------
+- Array of nodes (size 100)
+- Each node contains:
+  * name (string)
+  * telephone (string)
+  * key (int)
+
+4. COLLISION HANDLING
+-------------------
+Linear Probing:
+- If calculated index is occupied, move to next index
+- Formula: (index + 1) % size
+- Continues until empty slot is found
+
+5. OPERATIONS & ALGORITHMS
+------------------------
+a) Create Record:
+   - Generate hash key from name
+   - Find index using key % size
+   - If collision occurs, use linear probing
+   - Store data at available position
+
+b) Search Record:
+   - Generate hash key from search name
+   - Calculate initial index
+   - Linear probe until record found or all positions checked
+   - Time Complexity: O(1) average case, O(n) worst case
+
+c) Delete Record:
+   - Find record using search technique
+   - Set key to 0 (marking as empty)
+   - Clear name and telephone
+   
+d) Update Record:
+   - Search for record
+   - If found, update telephone number
+   - Maintain same hash key and index
+
+6. OUTPUT FORMAT
+--------------
+Display format:
+    Name            Telephone
+    ----            ---------
+    John            1234567890
+    Smith           9876543210
+
+7. TIME COMPLEXITIES
+------------------
+- Insertion: O(1) average, O(n) worst
+- Searching: O(1) average, O(n) worst
+- Deletion: O(1) average, O(n) worst
+- Update: O(1) average, O(n) worst
+
+8. ADVANTAGES & DISADVANTAGES
+--------------------------
+Advantages:
+- Fast access in average case
+- Dynamic data structure
+- Efficient for large datasets
+
+Disadvantages:
+- Collision handling required
+- Performance depends on hash function
+- May require resizing
+
+9. REAL-WORLD APPLICATIONS
+------------------------
+- Phone Contact Management
+- Database Indexing
+- Symbol Tables in Compilers
+- Cache Implementation
+
+10. IMPLEMENTATION DETAILS
+------------------------
+Key Components:
+a) Hash Function (ascii_generator):
+   ```cpp
+   sum = 0
+   for each character in name:
+       sum += ASCII value of character
+   return sum % 100
+   ```
+
+b) Collision Resolution:
+   ```cpp
+   while (slot is occupied):
+       index = (index + 1) % size
+   ```
+
+Let me know if you'd like me to continue with the detailed explanation of DSA2 and the remaining practicals.

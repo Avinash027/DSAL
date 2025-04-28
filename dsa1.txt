@@ -1,0 +1,164 @@
+=== DSA1: Telephone Directory Using Hashing ===
+
+1. CONCEPT EXPLANATION
+---------------------
+Hashing is a technique used to store and retrieve data in/from a data structure in the fastest possible way. In this practical, we implement a telephone directory using hash tables where names are mapped to telephone numbers using a hash function.
+
+Concept Source: https://www.geeksforgeeks.org/hashing-data-structure/
+
+2. INPUT/OUTPUT SPECIFICATIONS
+----------------------------
+INPUT:
+- Name (string): Contact name
+- Telephone (string): Phone number
+- Choice (int): Operation to perform (1-6)
+
+OUTPUT:
+- Success/failure messages for operations
+- Display of records in tabular format
+- Search results with contact details
+
+3. DATA STRUCTURES USED
+----------------------
+a) Class node:
+   - Private members:
+     * name (string)
+     * telephone (string)
+     * key (int)
+   - Public members:
+     * Constructor
+     * friend class declaration
+
+b) Class hashing:
+   - Private members:
+     * data[100]: Array of node objects
+     * size: Fixed size (100)
+   - Public members:
+     * Constructor
+     * CRUD operation methods
+
+4. ALGORITHM EXPLANATION
+-----------------------
+a) Hash Function (ascii_generator):
+   ```cpp
+   int ascii_generator(string name) {
+       int sum = 0;
+       for(char c : name) {
+           sum += (int)c;  // Add ASCII value
+       }
+       return sum % 100;   // Return hash value
+   }
+   ```
+
+b) Operations:
+
+1. CREATE RECORD:
+   - Get name and telephone
+   - Generate hash key from name
+   - Handle collision using linear probing
+   - Store at available position
+   Time Complexity: O(1) average, O(n) worst
+
+2. SEARCH RECORD:
+   - Get search name
+   - Generate hash key
+   - Linear probe until found
+   Time Complexity: O(1) average, O(n) worst
+
+3. DELETE RECORD:
+   - Find record position
+   - Set key to 0
+   - Clear data
+   Time Complexity: O(1) average, O(n) worst
+
+4. UPDATE RECORD:
+   - Find record
+   - Update telephone
+   Time Complexity: O(1) average, O(n) worst
+
+5. COLLISION HANDLING
+-------------------
+Method: Linear Probing
+Process:
+1. If calculated index is occupied:
+   index = (index + 1) % size
+2. Repeat until empty slot found
+3. Maximum probes = size of hash table
+
+Example:
+If index 45 is occupied:
+- Try 46, then 47, then 48...
+- If end reached, wrap around to 0
+
+6. PROGRAM FLOW
+--------------
+1. Main menu displays options
+2. User selects operation
+3. Input processing based on choice
+4. Hash function generates key
+5. Operation performed on data
+6. Result displayed
+7. Return to menu
+
+7. TIME & SPACE COMPLEXITY
+-------------------------
+Time Complexity:
+- Average case: O(1) for all operations
+- Worst case: O(n) when table is nearly full
+
+Space Complexity:
+- O(n) where n is size of hash table (100)
+
+8. ADVANTAGES
+------------
+1. Fast data retrieval
+2. Constant time operations in average case
+3. Simple implementation
+4. Efficient for large datasets
+
+9. DISADVANTAGES
+---------------
+1. Fixed size table
+2. Collision handling overhead
+3. Performance degrades as table fills
+4. Not suitable for ordered data access
+
+10. APPLICATIONS
+--------------
+1. Phone Contact Management
+2. Symbol Tables in Compilers
+3. Database Indexing
+4. Cache Implementation
+5. Password Verification
+
+11. PRACTICAL USAGE EXAMPLE
+-------------------------
+Scenario: Managing office contact directory
+
+Input:
+1. Add: "John Smith", "1234567890"
+2. Add: "Jane Doe", "9876543210"
+3. Search: "John Smith"
+4. Update: "Jane Doe" → "1122334455"
+5. Delete: "John Smith"
+
+Each operation utilizes hashing for efficient data management.
+
+12. COMMON ERRORS & SOLUTIONS
+---------------------------
+1. Collision Clustering
+   Solution: Implement better probing methods
+
+2. Hash Table Overflow
+   Solution: Implement table resizing
+
+3. Poor Key Distribution
+   Solution: Improve hash function
+
+13. CODE OPTIMIZATION TIPS
+------------------------
+1. Use efficient string handling
+2. Implement better collision resolution
+3. Add table load factor monitoring
+4. Include error handling
+5. Implement table resizing
